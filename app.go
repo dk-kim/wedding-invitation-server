@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"net/http"
 
-	"github.com/juhonamnam/wedding-invitation-server/env"
-	"github.com/juhonamnam/wedding-invitation-server/httphandler"
-	"github.com/juhonamnam/wedding-invitation-server/sqldb"
+	"github.com/dk-kim/wedding-invitation-server/env"
+	"github.com/dk-kim/wedding-invitation-server/httphandler"
+	"github.com/dk-kim/wedding-invitation-server/sqldb"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/rs/cors"
 )
@@ -21,8 +21,8 @@ func main() {
 	sqldb.SetDb(db)
 
 	mux := http.NewServeMux()
-	mux.Handle("/api/guestbook", new(httphandler.GuestbookHandler))
-	mux.Handle("/api/attendance", new(httphandler.AttendanceHandler))
+	mux.Handle("/guestbook", new(httphandler.GuestbookHandler))
+	mux.Handle("/attendance", new(httphandler.AttendanceHandler))
 
 	corHandler := cors.New(cors.Options{
 		AllowedOrigins:   []string{env.AllowOrigin},
